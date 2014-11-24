@@ -1,9 +1,9 @@
 //Learn http://www.gtwang.org/2014/03/socket-io-node-js-realtime-app.html
 var http = require('http');
-var io = require('socket.io');
 var url = require('url');
 var fs = require('fs');
 var path = require('path');
+var io = require('socket.io')(server);
 
 var server = http.createServer(function(req,res){
 	var urls = url.parse(req.url);
@@ -40,5 +40,12 @@ var server = http.createServer(function(req,res){
 		}
 	});
 });
+
+io.on('connection', function(socket){
+	console.log('connectioned!');
+  socket.on('event', function(data){});
+  socket.on('disconnect', function(){});
+});
+
 server.listen(80);
 io.listen(server);

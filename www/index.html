@@ -3,6 +3,13 @@
 <head>
 	<meta charset="utf-8">
 	<title>Hello World</title>
+	<script type="text/javascript" src="./socket.io/socket.io.js" ></script>
+	<script>
+		var socket = io('http://localhost');
+		socket.on('connect',function(){});
+		socket.on('event',function(data){});
+		socket.on('disconnect',function(){});
+	</script>
 </head>
 <body>
 Hello World
