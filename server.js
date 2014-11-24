@@ -43,7 +43,12 @@ var server = http.createServer(function(req,res){
 
 io.on('connection', function(socket){
 	console.log('connectioned!');
-  socket.on('event', function(data){});
+
+  socket.on('event', function(data){
+  	console.log('Get Event!');
+  	console.log(data);
+  });
+
   socket.on('disconnect', function(){});
 });
 
