@@ -4,6 +4,7 @@ var url = require('url');
 var fs = require('fs');
 var path = require('path');
 var io = require('socket.io')(server);
+var readline = require('readline');
 
 var server = http.createServer(function(req,res){
 	var urls = url.parse(req.url);
@@ -40,9 +41,17 @@ var server = http.createServer(function(req,res){
 		}
 	});
 });
-
+var rl = readline.createInterface({
+	input:process.stdin,
+	output: process.stdout
+});
 io.on('connection', function(socket){
 	console.log('connectioned!');
+  
+  process.stdout.write("KeyWord: ");
+  rl.on('line',function(cmd){
+  	io.emit(cmd);
+  });
 
   socket.on('event', function(data){
   	console.log('Get Event!');

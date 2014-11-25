@@ -10,7 +10,9 @@
 			console.log("Hello World");
 			socket.emit('event',15);
 		});
-		socket.on('event',function(data){});
+		socket.on('event',function(data){
+			console.log(data);
+		});
 		socket.on('disconnect',function(){});
 	</script>
 </head>
